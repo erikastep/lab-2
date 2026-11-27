@@ -1,7 +1,0 @@
-{
-  "name": "Lab2.Gabriele.Editor",
-  "rootNamespace": "Lab2.EditorTools",
-  "references": ["Lab2.Gabriele", "Unity.Behavior", "Unity.Behavior.SerializableGUID", "Unity.AI.Navigation", "Unity.AI.Navigation.Editor"],
-  "includePlatforms": ["Editor"],
-  "autoReferenced": true
-}

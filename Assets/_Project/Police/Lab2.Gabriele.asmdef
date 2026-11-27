@@ -1,6 +1,0 @@
-{
-  "name": "Lab2.Gabriele",
-  "rootNamespace": "Lab2",
-  "references": ["Unity.Behavior", "Unity.Behavior.SerializableGUID", "Unity.InputSystem"],
-  "autoReferenced": true
-}

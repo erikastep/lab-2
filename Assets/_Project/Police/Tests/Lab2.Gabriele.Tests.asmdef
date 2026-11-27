@@ -1,9 +1,0 @@
-{
-  "name": "Lab2.Gabriele.Tests",
-  "references": ["Lab2.Gabriele", "Unity.Behavior", "Unity.Behavior.SerializableGUID", "UnityEngine.TestRunner", "UnityEditor.TestRunner"],
-  "optionalUnityReferences": [],
-  "precompiledReferences": ["nunit.framework.dll"],
-  "overrideReferences": true,
-  "defineConstraints": ["UNITY_INCLUDE_TESTS"],
-  "autoReferenced": false
-}
