@@ -41,4 +41,4 @@
 | No resources | no key, no tool, door locked | no route → Wander, wait 2 s, retry; never gets the treasure | |
 | Key + tool (extra) | both on | takes the key (priority) | |
 
-Note: I checked my files on a copy of this repo with Unity 6000.6.4f1 and Behavior 1.0.16 (11/11 tests passed). I have not opened them in 6000.2.9f1 yet.
+Checked in this repo with **Unity 6000.2.9f1** and Behavior 1.0.16: 11/11 PlayMode tests pass. The scene, NavMesh and materials are saved with 6000.2.9f1.

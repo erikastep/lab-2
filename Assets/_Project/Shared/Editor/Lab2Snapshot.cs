@@ -11,7 +11,8 @@ namespace Lab2.EditorTools
         public static void Snap()
         {
             EditorSceneManager.OpenScene(Lab2SceneBuilder.ScenePath);
-            EditorSettings.asyncShaderCompilation = false;
+            // Compile shaders synchronously for this render only (no project setting is changed).
+            bool prevAsync = ShaderUtil.allowAsyncCompilation;
             ShaderUtil.allowAsyncCompilation = false;
             var cam = Camera.main;
             cam.Render();
@@ -24,6 +25,7 @@ namespace Lab2.EditorTools
             tex.Apply();
             cam.targetTexture = null;
             RenderTexture.active = null;
+            ShaderUtil.allowAsyncCompilation = prevAsync;
             System.IO.File.WriteAllBytes("Lab2_scene_snapshot.png", tex.EncodeToPNG());
             Debug.Log("[Lab2Snapshot] saved Lab2_scene_snapshot.png");
         }
