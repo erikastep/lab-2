@@ -2,6 +2,7 @@ using System;
 using Unity.Behavior;
 using Unity.Properties;
 using UnityEngine;
+using UnityEngine.AI;
 using Action = Unity.Behavior.Action;
 
 // Writes the closest of the three refuges into NearestRefuge.
@@ -24,7 +25,7 @@ public partial class FindNearestRefugeAction : Action
         foreach (var refuge in new[] { Refuge1.Value, Refuge2.Value, Refuge3.Value })
         {
             if (refuge == null) continue;
-            float distance = Vector3.Distance(Self.Value.transform.position, refuge.transform.position);
+            float distance = PathLength(Self.Value.transform.position, refuge.transform.position);
             if (distance < bestDistance)
             {
                 bestDistance = distance;
@@ -35,5 +36,15 @@ public partial class FindNearestRefugeAction : Action
         if (best == null) return Status.Failure;
         NearestRefuge.Value = best;
         return Status.Success;
+    }
+
+    // Walking distance on the NavMesh, so walls count (falls back to straight line).
+    static float PathLength(Vector3 from, Vector3 to)
+    {
+        var path = new NavMeshPath();
+        if (!NavMesh.CalculatePath(from, to, NavMesh.AllAreas, path)) return Vector3.Distance(from, to);
+        float length = 0f;
+        for (int i = 1; i < path.corners.Length; i++) length += Vector3.Distance(path.corners[i - 1], path.corners[i]);
+        return length;
     }
 }
